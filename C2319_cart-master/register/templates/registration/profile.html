@@ -1,0 +1,113 @@
+ {% extends 'base.html' %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<br><br><br><br>
+{% if user.is_authenticated %}
+
+{% if messages %}
+        {% for message in messages %}
+            {% if "info_update" in message.tags %}
+                <div class="alert alert-success" role="info_update">
+                <p class="{{ message.tags }}" id="message-center">{{ message }}</p>
+            {% elif "password_update" in message.tags %}
+                <div class="alert alert-warning" role="password_update">
+                <p class="{{ message.tags }}" id="message-center">{{ message }}</p>
+            {% endif %}
+        {% endfor %}
+        </div>
+{% endif %}
+
+
+<h3>You can find all of your information here: </h3><br>
+<div class="container">
+    <div class="row">
+      <div class="col-md-10 mt-3 left">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div id="same-line-1">
+                <h4><u>Username:</u><h4>
+            </div>
+            <div id="same-line-2">
+                <h4>{{ user }}</h4>
+            </div><br><br>
+            <div id="same-line-1">
+                <h4><u>Email: </u></h4>
+            </div>
+            <div id="same-line-2">
+                <h4>{{ user.email }}</h4>
+            </div><br><br>
+            <div id="same-line-1">
+                <h4><u>First Name: </u></h4>
+            </div>
+            <div id="same-line-2">
+                <h4>{{ user.first_name }}</h4>
+            </div><br><br>
+            <div id="same-line-1">
+                <h4><u>Last Name: </u></h4>
+            </div>
+            <div id="same-line-2">
+                <h4>{{ user.last_name }}</h4>
+            </div><br><br>
+            <div id="same-line-1">
+                <h4><u>Age: </u></h4> 
+            </div>
+            <div id="same-line-2">
+                <h4>{{ user.userprofile.age }}</h4>
+            </div><br><br>
+            <div id="same-line-1">
+                <h4><u>Street address: </u></h4>
+            </div>
+            <div id="same-line-2">
+                <h4>{{ user.userprofile.street_address_1 }}</h4>
+            </div><br><br>
+            <div id="same-line-1">
+                <h4><u>Street address 2: </u></h4>
+            </div>
+            <div id="same-line-2">
+                <h4>{{ user.userprofile.street_address_2 }}</h4>
+            </div><br><br>
+            <div id="same-line-1">
+                <h4><u>City: </u></h4>
+            </div>
+            <div id="same-line-2">
+                <h4>{{ user.userprofile.city }}</h4>
+            </div><br><br>
+            <div id="same-line-1">
+                <h4><u>State: </u></h4>
+            </div>
+            <div id="same-line-2">
+                <h4>{{ user.userprofile.state }}</h4>
+            </div><br><br>
+            <div id="same-line-1">
+                <h4><u>Zip: </u></h4>
+            </div>
+            <div id="same-line-2">
+                <h4>{{ user.userprofile.zip }}</h4>
+            </div><br><br>
+            <div id="same-line-1">
+                <h4><u>Occupation: </u></h4>
+            </div>
+            <div id="same-line-2">
+                <h4>{{ user.userprofile.get_occupation_display }}</h4>
+            </div><br><br><br>
+            <div id="same-line-1">
+              <a type="button" class="btn btn-outline-success" href="{% url 'edit_profile' %}">Edit Profile</a>
+            </div>
+            <div id="same-line-2">
+              <a type="button" class="btn btn-outline-danger" href="{% url 'change_password' %}">Change Password</a>
+            </div>
+            <div id="same-line-2">
+              <!-- <a type="button" class="btn btn-outline-danger" href="{% url 'remove_user'  %}">Delete</a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+{% else %}
+  <h3>You are not allowed to see this post</h3><br>
+  <h1>Redirect...</h1>
+  <meta http-equiv = "refresh" content = "3; url = {% url 'home' %}" />
+{% endif %}
+{% endblock %}

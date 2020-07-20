@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% block content %}
+<br><br><br>
+{% if user.is_authenticated and post.publish == 1 or user == post.user%}
+    {% if messages %}
+        {% for message in messages %}
+            {% if "edit" in message.tags %}
+                <div class="alert alert-success" role="edit">
+                <p class="{{ message.tags }}" id="message-center">{{ message }}</p>
+            {% elif "send" in message.tags %}
+                <div class="alert alert-info" role="send">
+                <p class="{{ message.tags }}" id="message-center">{{ message }}</p>
+            {% endif %}
+        {% endfor %}
+        </div>
+    {% endif %}
+
+<div class="container">
+        <div class="center">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h1>{{ object.title }}</h1>
+                    <br>
+                        <div class="same-line-img"><br><br>
+                            {% if object.cover %}
+                            <img src="{{ object.cover.url}}" alt="{{ object.title }}" >
+                            {% else %}
+                            <img src="/media/images/no-image-available-icon-6.jpg" >
+                            {% endif %}        
+                        </div>
+                        <div class="col-sm-6">
+                            <h3>Description:</h3>
+                            <h5 class="pt-6-half" class="card-text text-muted h6">&nbsp{{ object.body }}</h5>
+                        </div><br>                    
+                        <div class="col-sm-6">
+                            <div id="same-line-1">
+                                <h3>Price:</h3>
+                            </div>
+                            <div id="same-line-2">
+                                {% if object.price == None %}
+                                    <h5 class="pt-6-half" class="card-text text-muted h6 pt-6-half">&#36;0</h5>
+                                {% else %}
+                                    <h5 class="pt-6-half" class="card-text text-muted h6 pt-6-half">&#36;{{ object.price }}</h5>
+                                {% endif %}
+                            </div>
+                        </div><br> 
+                        <div class="col-sm-6">
+                            <div id="same-line-1">
+                                <h3>Condition:<h3>
+                            </div>
+                            <div id="same-line-2">
+                                {% if object.get_condition_display == 'Used - Not Usable' %}
+                                    <h5 class="pt-6-half" class="card-text text-muted h6"><font color="red">{{ object.get_condition_display }}</font></h5>
+                                {% elif object.get_condition_display == 'Used - working' %}
+                                    <h5 class="pt-6-half" class="card-text text-muted h6"><font color="#b38f00">{{ object.get_condition_display }}</font></h5>
+                                {% elif object.get_condition_display == 'Brand New' %}
+                                    <h5 class="pt-6-half" class="card-text text-muted h6"><font color="green">{{ object.get_condition_display }}</font></h5>
+                                {% elif object.get_condition_display == 'Used - Like New' %}
+                                    <h5 class="pt-6-half" class="card-text text-muted h6"><font color="#0099cc">{{ object.get_condition_display }}</font></h5>
+                                {% elif object.get_condition_display == 'Used - Good' %}
+                                    <h5 class="pt-6-half" class="card-text text-muted h6"><font color="##9900cc">{{ object.get_condition_display }}</font></h5>
+                                {% endif %}
+                            </div>
+                        </div><br> 
+                        <div class="col-sm-6">
+                            <div id="same-line-1">
+                                <h3>Category:</h3>
+                            </div>
+                            <div id="same-line-2">
+                                <h5 class="pt-6-half" class="card-text text-muted h6">{{ object.get_category_display }}</h5>
+                            </div>
+                        </div><br>
+                        {% if user == post.user %}
+                            <div class="col-sm-6">
+                                <div id="same-line-1">
+                                    <h3>Publish:</h3>
+                                </div>
+                                <div id="same-line-2">
+                                    <h5 class="pt-6-half" class="card-text text-muted h6">{{ object.get_publish_display }}</h5>
+                                </div>
+                            </div><br> 
+                        {% endif %}
+                        <br><br><br>
+                        <div class="col-sm-12">
+                            {% if user == post.user %}
+                                <a type="button" class="btn btn-outline-success" href="{% url 'edit_post' post.pk %}">Edit</a>
+                            <!-- <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" href="{% url 'delete_post' post.pk %}">Delete</button> -->
+                                <a type="button" class="btn btn-outline-danger" href="{% url 'delete_post' post.pk %}">Delete</a>
+                            {% else %}
+                                <a type="button" class="btn btn-outline-success" href="{% url 'email' post.pk %}">Send a message</a>
+                            {% endif %}
+                            <button onclick="window.location.href='https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri}}'" class="btn btn-outline-primary">
+                                Facebook
+                            </button>
+                            <button onclick="window.location.href='https://twitter.com/home?status=Check%20out%20my%20post%20on%20Collegemarket!%20{{ request.build_absolute_uri}}'" class="btn btn-outline-primary">
+                                Twitter
+                            </button>
+                            <button onclick="window.location.href='https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri}}&title=Be%20first%20%7C%20Join%20Collegemarket&summary=Check%20out%20my%20post%20on%20Collegemarket!%20 &source={{ request.build_absolute_uri}}'" class="btn btn-outline-primary">
+                                Linkedin
+                            </button>
+                        </div><br> 
+                </div>
+            </div>
+        </div>
+</div>
+
+
+
+{% else %}
+    <h3>You are not allowed to see this post</h3><br>
+    <h1>Redirect...</h1>
+    <meta http-equiv = "refresh" content = "2; url = {% url 'home' %}" />
+{% endif %}
+
+{% endblock %}

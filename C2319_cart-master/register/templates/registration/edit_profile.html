@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Edit Account {% endblock %}
+{% block content %}
+<br><br><br><br><br>
+{% if user.is_authenticated %}
+<h2>You can edit your personal information here: <br><br><br></h2>
+    <div class="container">
+     <div class="card mb-4">
+      <form method="POST" class="form-group">
+        {% csrf_token %}
+        <!-- {{ profile_form_e | crispy}} -->
+        <!-- {{ form_e  | crispy}} -->
+        <br>
+            <div class="col-sm-4">
+                <h4>First Name:</h4>
+                <h6>{{ form_e.first_name }}</h6>
+            </div>
+        <br>
+            <div class="col-sm-4">
+                <h4>Last Name:</h4>
+                <h6>{{ form_e.last_name }}</h6>
+            </div>
+        <br>
+            <div class="col-sm-4">
+                <h4>Age:</h4>
+                <h6>*Must be older than 16</h6>
+                <h6>{{ profile_form_e.age }}</h6>
+            </div>
+        <br>
+            <div class="col-sm-4">
+                <h4>Occupation:</h4>
+                <h6>{{ profile_form_e.occupation }}</h6>
+            </div>
+        <br>
+            <div class="col-sm-4">
+                <h4>Street address:</h4>
+                <h6>{{ profile_form_e.street_address_1 }}</h6>
+            </div>
+        <br>
+            <div class="col-sm-4">
+                <h4>Street address 2:</h4>
+                <h6>{{ profile_form_e.street_address_2 }}</h6>
+            </div>
+        <br>
+            <div class="col-sm-4">
+                <h4>City:</h4>
+                <h6>{{ profile_form_e.city }}</h6>
+            </div>
+        <br>
+            <div class="col-sm-4">
+                <h4>State:</h4>
+                <h6>{{ profile_form_e.state }}</h6>
+            </div>
+        <br>
+            <div class="col-sm-4">
+                <h4>Zip:</h4>
+                <h6>{{ profile_form_e.zip }}</h6>
+            </div>
+        <br>
+            <div class="col-sm-4">
+                <button class="btn btn-success" type="submit" value="save" id="edit-pro">Save</button>
+            </div>
+        <br>
+      </form>
+      <br>
+    <div>
+   </div>
+
+{% else %}
+  <h3>You are not allowed to see this post</h3><br>
+  <h1>Redirect...</h1>
+  <meta http-equiv = "refresh" content = "3; url = {% url 'home' %}" />
+{% endif %}
+{% endblock %}

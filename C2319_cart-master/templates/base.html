@@ -1,0 +1,398 @@
+{% load static %}
+
+{% load cart_template_tags %}
+<!DOCTYPE html>
+<html>
+<title>c-2319</title>
+<head>
+<!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href=" {% static 'css/style.min.css' %}" rel="stylesheet">
+  <style type="text/css">
+    html,
+    body,
+    header,
+   
+
+    @media (max-width: 740px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+  </style>
+  <style type="text/css">
+      #element1 {float:center; color:green;}
+      #element2 {float:left; color:SlateBlue;}
+      #element3 {float:left; color:Tomato;}
+
+      body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+      body, html {
+        height: 100%;
+        line-height: 1.8;
+        }
+
+    /* Full height image header */
+      .bgimg-1 {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        background-image: url("media/two-brown-and-red-gift-boxes-on-red-surface-1666070.jpg");
+        width:  5915px;
+        height: 685px;
+        min-width :50% !important;
+        max-width :100% !important;
+        }
+      .bgimg-2 {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        background-image: url("media/black-box-with-green-bow-accent-157879.jpg");
+        width:  8192px;
+        height: 685px;
+        min-width :50% !important;
+        max-width :100% !important;
+	  }
+      #jumbo {
+       font-size:60px;
+	  }
+
+      .w3-bar .w3-button {
+        padding: 16px;
+        }
+
+        #same-line-1 {
+        display:inline-block;
+        padding:0px;
+        font-weight: bold;
+		}
+        #same-line-2 {
+        display:inline-block;
+        width:45%;
+        padding:px  
+		}
+        #same-line-3 {
+        display:inline;
+        padding:px  
+		}
+        #same-line-4 {
+        display:inline;
+        padding:px  
+		}
+        .form-control {
+        display:initial !important;
+        }
+        .col-sm-4 {
+        margin: 0px 0px 0px;
+		}
+        .col-sm-12 .btn {
+          margin:10px 0px 0px 40px;  
+		}
+        .same-line-img img {
+          float:right;
+          width:50%;
+          height:100%;
+          object-fit:cover;
+          margin-top: -10%;
+		}
+        .card-body h1{
+          font-size: 50px;
+          margin-left: 3%;
+		}
+        .col-sm-12 .btn
+        {
+          padding: 20px 22px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 14px;
+          border-radius: 12px;
+          box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+          width: 170px;
+          position: center;
+		}
+
+        .row .btt-box{
+        position: right;
+        display: inline-block;
+		}
+        #forsale {
+            border: 1px solid white;
+            padding:17px;
+		}
+        #filter_but {
+          padding: 10px 22px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 18px;
+          border-radius: 12px;
+          box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+          width: 190px;
+          position: right;
+		}
+        /*
+        .container
+        {
+        border: 2px solid green
+		}
+        .center {
+         border: 2px solid red 
+		}
+         .col-sm-4 {
+          border: 2px solid blue
+		}
+        */
+
+        #cont_item {
+          padding:-40px;
+		}
+        #indi_item {
+          margin:0px;
+		}
+        #item-img {
+         float:  center;
+         width:  330px;
+         height: 330px;
+         min-width :20% !important;
+         max-width :100% !important;
+         background-size: cover;
+         margin-left: auto;
+         margin-right: auto;
+         margin-top:20px;
+         display: block;
+         object-fit:scale-down;
+		}
+        .title_under_img{
+        text-align: center;
+        display: block;
+        width: 200px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: 20px;
+		}
+        .col-sm-4 .title_under_img {
+          margin: auto;
+          width: 90%;
+          padding: 0px;
+		}
+        .dis_under_title {
+        text-align: center;
+        display: block;
+        width: 200px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+		}
+        .price_under_dis {
+         text-align: center; 
+		}
+        .col-sm-4 .dis_under_title {
+          margin: auto;
+          width: 50%;
+          padding: 0px;
+		}
+        #span_body{
+          font-size:14px;  
+		}
+    #message-center {
+      text-align: center;
+      font-size: 16px;
+    }
+    #less_char {
+      font-size: 14px;
+    }
+    #milestone{
+      float:  center;
+    }
+    .quote {
+      margin: 0;
+      background: #eee;
+      padding: 1em;
+      border-radius: 1em;
+    }
+    .quote figcaption,
+    .quote blockquote {
+      margin: 1em;
+    }
+  </style>
+
+	<!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+<header class="site-header">
+
+<!-- Navbar (sit on top) -->
+
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <a href="{% url 'home' %}" class="w3-bar-item w3-button w3-wide">COLLEGE MARKET</a>
+      <div class="w3-hide-small">
+          <a href="{% url 'home' %}" class="w3-bar-item w3-button"><i class="fa fa-home"></i> Home</a>
+          <a href="{% url 'about' %}" class="w3-bar-item w3-button"><i class="fa fa-info"></i> About</a>
+          <a href="{% url 'milestone_17' %}" class="w3-bar-item w3-button"><i class="fa fa-thumb-tack"></i> Milestone-17</a>
+          {% if user.is_authenticated %}
+            <a href="{% url 'for_sale' %}" class="w3-bar-item w3-button"><i class="fa fa-usd"></i>Sale</a>
+		
+            <div class="w3-right">
+<a href="{% url 'order-summary' %}" class="w3-bar-item w3-button" >
+                {% if request.user|cart_item_count != 0 %}
+                  <span class="badge red z-depth-1 mr-1"> {{ request.user|cart_item_count }} </span>
+                {% endif %}
+                <i class="fas fa-shopping-cart"></i>
+                <span class="clearfix d-none d-sm-inline-block"> Cart </span>
+                </a>
+		<a class="w3-bar-item w3-button" >
+                Hi {{ user.username }}!
+                </a>	
+ 			
+                  <a href="{% url 'add_post' %}" class="w3-bar-item w3-button"><i class="fa fa-plus"></i> New Posts</a>
+                  <a href="{% url 'post_list' %}" class="w3-bar-item w3-button"><i class="fa fa-list"></i> My Posts</a>
+                  <a href="{% url 'view_profile' %}" class="w3-bar-item w3-button"><i class="fa fa-user"></i> My Profile</a>
+                  <a href="/logout" class="w3-bar-item w3-button"><i class="fa fa-sign-out"></i> Logout</a>
+            </div>
+            {% else %}
+             <div class="w3-right">
+                  <a href="/login" class="w3-bar-item w3-button"><i class="fa fa-sign-in"></i> Login</a>
+                  <a href="/register" class="w3-bar-item w3-button"><i class="fa fa-user-plus"></i> Register</a>
+             </div>
+            {% endif %}
+      </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16"><i class="fa fa-times"></i>Close</a>
+    <a href="{% url 'home' %}" class="w3-bar-item w3-button"><i class="fa fa-home"></i> Home</a>
+    <a href="{% url 'about' %}" class="w3-bar-item w3-button"><i class="fa fa-info"></i> About</a>
+    <a href="{% url 'milestone_17' %}" class="w3-bar-item w3-button"><i class="fa fa-thumb-tack"></i> Milestone-17</a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'for_sale' %}" class="w3-bar-item w3-button"><i class="fa fa-usd"></i> Items for sale</a>
+        <a href="{% url 'add_post' %}" class="w3-bar-item w3-button"><i class="fa fa-plus"></i> New Posts</a>
+        <a href="{% url 'post_list' %}" class="w3-bar-item w3-button"><i class="fa fa-list"></i> My Posts</a>
+        <a href="{% url 'view_profile' %}" class="w3-bar-item w3-button"><i class="fa fa-user"></i> My Profile</a>
+        <a href="/logout" class="w3-bar-item w3-button"><i class="fa fa-sign-out"></i> Logout</a>
+    {% else %}
+        <a href="/login" class="w3-bar-item w3-button"><i class="fa fa-sign-in"></i> Login</a>
+        <a href="/register" class="w3-bar-item w3-button"><i class="fa fa-user-plus"></i> Register</a>
+    {% endif %}
+</nav>
+
+    <!--
+	  <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+		<div class="container">
+		  <a class="navbar-brand mr-4" href="{% url 'home' %}">College Market</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		  </button>
+          
+		  <div class="collapse navbar-collapse" id="navbarToggle">
+			<div class="navbar-nav mr-auto">
+			  <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
+        <a class="nav-item nav-link" href="{% url 'about' %}">About</a>
+        {% if user.is_authenticated %}
+        <a class="nav-item nav-link" href="{% url 'for_sale' %}">Items for sale</a>
+        {% endif %}
+			</div>
+            
+      {% if user.is_authenticated %}
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="{% url 'add_post' %}">New Posts</a>
+        <a class="nav-item nav-link" href="{% url 'post_list' %}">My Posts</a>
+        <a class="nav-item nav-link" href="{% url 'view_profile' %}">My Profile</a>
+        <a class="nav-item nav-link" href="/logout">Logout</a>
+			</div>
+      {% else %}
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="/login">Login</a>
+        <a class="nav-item nav-link" href="/register">Register</a>
+			</div>
+      {% endif %}
+		  </div>
+		</div>
+	  </nav>
+          -->
+
+	</header>
+	<main role="main" class="container">
+    <div>
+    </div>
+
+	  <div class="row">
+		<div class="col-md-12">
+      {% block content %}{% endblock %}
+		</div>
+	  </div>
+	</main>
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+      <script>
+        // Modal Image Gallery
+        function onClick(element) {
+          document.getElementById("img01").src = element.src;
+          document.getElementById("modal01").style.display = "block";
+          var captionText = document.getElementById("caption");
+          captionText.innerHTML = element.alt;
+        }
+
+
+        // Toggle between showing and hiding the sidebar when clicking the menu icon
+        var mySidebar = document.getElementById("mySidebar");
+
+        function w3_open() {
+          if (mySidebar.style.display === 'block') {
+            mySidebar.style.display = 'none';
+          } else {
+            mySidebar.style.display = 'block';
+          }
+        }
+
+        // Close the sidebar with the close button
+        function w3_close() {
+            mySidebar.style.display = "none";
+        }
+      </script>
+
+</body>
+</html>

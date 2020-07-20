@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br><br><br>
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+
+<div class="field_wrapper">
+  {{ form.title | as_crispy_field }}
+  <h6 id="less_char">*Must be equal or less than 50 characters</h6>
+</div>
+<br>
+
+<div class="field_wrapper">
+  <!-- {{ form.non_field_errors }} -->
+  {{ form.body | as_crispy_field}}
+  <h6 id="less_char">*Must be equal or less than 300 characters</h6>
+</div>
+<br>
+
+<div class="field_wrapper">
+  <!-- {{ form.non_field_errors }} -->
+  <label fpr="{{ form.price.id_for_label }}"></label>
+  {{ form.price | as_crispy_field}}
+</div>
+<br>
+
+<div class="field_wrapper">
+  <!-- {{ form.non_field_errors }} -->
+  <label fpr="{{ form.condition.id_for_label }}"></label>
+  {{ form.condition | as_crispy_field}}
+</div>
+<br>
+
+<div class="field_wrapper">
+  <!-- {{ form.non_field_errors }} -->
+  <label fpr="{{ form.category.id_for_label }}"></label>
+  {{ form.category | as_crispy_field}}
+</div>
+<br>
+
+<div class="field_wrapper">
+  <!-- {{ form.non_field_errors }} -->
+  {{ form.cover | as_crispy_field}}
+  <label method="POST" enctype="multipart/form-data" fpr="{{ form.cover.id_for_label }}"></label>
+</div>
+<br>
+
+<div class="field_wrapper">
+  <!-- {{ form.non_field_errors }} -->
+  <label fpr="{{ form.publish.id_for_label }}"></label>
+  {{ form.publish | as_crispy_field}}
+</div>
+
+<button class="btn btn-success" type="submit">Save</button>
+</form>
+
+{% endblock %}

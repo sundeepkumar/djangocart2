@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}Create an Account {% endblock %}
+{% block content %}
+<br><br><br><br><br>
+{% if messages %}
+      {% for message in messages %}
+          {% if "email_not_edu" in message.tags %}
+              <div class="alert alert-danger" id="" role="email_not_edu">
+              <p class="{{ message.tags }}" id="message-center">{{ message }}</p>
+          {% elif "email_not_uni" in message.tags %}
+              <div class="alert alert-danger" id="" role="email_not_uni">
+              <p class="{{ message.tags }}" id="message-center">{{ message }}</p> 
+          {% endif %}
+      {% endfor %}
+      </div>
+    {% endif %}
+<div class="container">
+  <div class="place_reg mb-4">
+    <form method="POST" class="form-group">
+      {% csrf_token %}
+      {{ form | crispy}}
+      <!-- <div class="col-sm-6">
+        <h6>First Name</h6>
+        <h6>{{ form.first_name }}</h6>
+      </div>
+      <div class="col-sm-6">
+        <h6>Last Name</h6>
+        <h6>{{ form.last_name }}</h6>
+      </div>
+      <div class="col-sm-6">
+        <h6>Email</h6>
+        <h6>{{ form.email }}</h6>
+      </div>
+      <div class="col-sm-6">
+        <h6>Password</h6>
+        <h6>{{ form.password1 }}</h6>
+      </div>
+      <div class="col-sm-6">
+        <h6>Password confirmation</h6>
+        <h6>{{ form.password2 }}</h6>
+      </div> -->
+  
+            <div class="col-sm-14">
+              <h6>{{ profile_form.age | as_crispy_field }}</h6>
+              <h6>*must be older than 16</h6><br>
+            </div>
+            <div class="col-sm-14">
+              <h6>{{ profile_form.occupation | as_crispy_field }}</h6>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <h6>{{ profile_form.street_address_1 | as_crispy_field }}</h6>
+              </div>
+              <div class="col-sm-6">
+                <h6>{{ profile_form.street_address_2 | as_crispy_field }}</h6>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-4">
+                <h6>{{ profile_form.city | as_crispy_field }}</h6>
+              </div>
+              <div class="col-sm-4">
+                <h6>{{ profile_form.state | as_crispy_field }}</h6>
+              </div>
+              <div class="col-sm-4">
+                <h6>{{ profile_form.zip | as_crispy_field }}</h6>
+              </div>
+            </div>
+            <br>      
+      <button type="submit" class="btn btn-success"> register </button>
+    </form>
+  <div>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br><br><br>
+{% if user.is_authenticated %}
+    {% if messages %}
+        {% for message in messages %}
+            {% if "add" in message.tags %}
+                <div class="alert alert-success" role="add">
+                <p class="{{ message.tags }}" id="message-center">{{ message }}</p>
+            {% elif "delete" in message.tags %}
+                <div class="alert alert-danger" role="delete">
+                <p class="{{ message.tags }}" id="message-center">{{ message }}</p>
+            {% endif %}
+        {% endfor %}
+        </div>
+    {% endif %}
+
+    <h1>My Items</h1>
+        <div class="center " id="cont_item">
+            <div class="row">
+            {% for post in user.post.all %}
+                <div class="col-sm-4 card" id="indi_item">
+                    {% if post.cover %}
+                        <a href="{{ post.pk }}"><img src="{{ post.cover.url}}" alt="{{ post.title }}" id="item-img"></a>
+                    {% else %}
+                        <a href="{{ post.pk }}"><img src="/media/images/no-image-available-icon-6.jpg" alt="{{ post.title }}" id="item-img"></a>
+                    {% endif %}
+                    <div class="title_under_img">
+                        <a href="{{ post.pk }}"><span id="element1">{{ post.title }}</span></a>
+                    </div>
+                    <div class="dis_under_title">
+                        <a href="{{ post.pk }}"><span id="span_body">{{ post.body }}</span></a>
+                    </div>
+                    <div class="price_under_dis">
+                        {% if post.price == None %}
+                            <h5 class="pt-6-half" class="card-text text-muted h6 pt-6-half">&#36;0</h5>
+                        {% else %}
+                            <h5 class="pt-6-half" class="card-text text-muted h6 pt-6-half">&#36;{{ post.price }}</h5>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+        <br><br><br>
+  
+
+
+
+{% else %}
+  <p>You are not allowed to see this list</p>
+  <meta http-equiv = "refresh" content = "2"; url ='/post' />
+{% endif %}
+{% endblock %}

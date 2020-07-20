@@ -1,0 +1,3 @@
+add item - http://127.0.0.1:8000/post/add/post/
+edit iteam(slug of item try is => try) - http://127.0.0.1:8000/post/edit/try/
+image url - http://127.0.0.1:8000/media/images/oneplus-7t-back-382x238-c_22hyj2S.jpg

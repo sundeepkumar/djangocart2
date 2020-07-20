@@ -1,0 +1,68 @@
+﻿{% extends 'base.html' %}
+{% load bootstrap %}
+{% block content %}
+<br><br><br>
+{% if user.is_authenticated %}
+  <h1>Items for sale</h1><br>
+  <div class="card" id="forsale">
+  <div class="col-sm-12">
+    <form method="GET">
+
+       <div class="row">
+        <h4>&nbspTitle Contains&nbsp</4>
+        {{ filter.form.title__icontains}}
+        <div class="btt-box">
+            <button type="submit" class="btn btn-success" id="filter_but">Search</button>
+            <a href="#demo" class="btn btn-info" data-toggle="collapse" id="filter_but">Advanced Search</a>
+            <a href="{% url 'for_sale' %}" class="btn btn-danger" id="filter_but">Clear Filter</a>
+       </div>
+        <div id="demo" class="collapse">
+            <h4>Category&nbsp</4>
+            {{ filter.form.category}}
+            <h4><br>Price contains&nbsp</4>
+            {{ filter.form.price__icontains}}
+            <h4><br>Condition&nbsp</4>
+            {{ filter.form.condition}}
+        </div>
+        </div>
+    </form>
+  </div>
+  </div>
+
+
+    <div class="center " id="cont_item">
+        <div class="row">
+            {% for post in filter.qs %}
+                {% if post.publish == 1 %}
+                    <div class="col-sm-4 card" id="indi_item">
+                        {% if post.cover %}
+                            <a href="{{ post.pk }}"><img src="{{ post.cover.url}}" alt="{{ post.title }}" id="item-img"></a>
+                        {% else %}
+                            <a href="{{ post.pk }}"><img src="/media/images/no-image-available-icon-6.jpg" alt="{{ post.title }}" id="item-img"></a>
+                        {% endif %}
+                        <div class="title_under_img">
+                            <a href="{{ post.pk }}"><span id="element1">{{ post.title }}</span></a>
+                        </div>
+                        <div class="dis_under_title">
+                            <a href="{{ post.pk }}"><span id="span_body">{{ post.body }}</span></a>
+                        </div>
+                        <div class="price_under_dis">
+                            {% if post.price == None %}
+                                <h5 class="pt-6-half" class="card-text text-muted h6 pt-6-half">&#36;0</h5>
+                            {% else %}
+                                <h5 class="pt-6-half" class="card-text text-muted h6 pt-6-half">&#36;{{ post.price }}</h5>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <br><br><br>
+
+
+{% else %}
+  <p>You are not allowed to see this list</p>
+  <meta http-equiv = "refresh" content = "2"; url ='/post' />
+{% endif %}
+{% endblock %}

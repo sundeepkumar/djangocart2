@@ -1,0 +1,50 @@
+<br>
+  {% for post in user.post.all %}
+      <ul>
+        <li><a href="{{ post.pk }}"><p id="element1">{{ post.title }}  </p><p id="element2">,  ${{ post.price }}</p><p id="element3"> , {{ post.get_condition_display }}</p</a></li>
+      </ul>
+  {% endfor %}
+
+
+{% extends 'base.html' %}
+{% load bootstrap %}
+{% block content %}
+<br><br><br>
+{% if user.is_authenticated %}
+  <h1>Items for sale</h1><br>
+    <div class="container">
+     <form method="GET">
+      <div class="form-row align-items-center">
+        <div class="col-auto">
+            {{ filter.form | bootstrap}}
+            <button type="submit" class=="btn btn-primary">Search</button>
+        </div>
+       </div>
+     </form><br>
+
+    {% for post in filter.qs %}
+     {% if post.publish == 1 %}
+            <ul>
+              <li><a href="{{ post.pk }}"><p id="element1">{{ post.title }}  </p><p id="element2">,  ${{ post.price }}</p><p id="element3"> , {{ post.get_condition_display }}</p</a></li>
+            </ul>
+     {% endif %}
+    {% endfor %}
+    </div>
+
+{% else %}
+  <p>You are not allowed to see this list</p>
+  <meta http-equiv = "refresh" content = "2"; url ='/post' />
+{% endif %}
+{% endblock %}
+
+
+<div class="container">
+     <form method="GET">
+      <div class="form-row align-items-center">
+        <div class="col-auto">
+            {{ filter.form | bootstrap}}
+            <button type="submit" class=="btn btn-primary">Search</button>
+        </div>
+       </div>
+     </form><br>
+    </div>

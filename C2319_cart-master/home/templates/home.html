@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block content %}
+	<br><br><br>
+    <br>
+
+    
+    <!-- Header with full-height image -->
+        {% if user.is_authenticated %}
+          {% if messages %}
+            {% for message in messages %}
+
+                {% if "email_active_true" in message.tags %}
+                    <div class="alert alert-success" role="email_active_true">
+                    <p class="{{ message.tags }}" id="message-center">{{ message }}</p>
+                {% endif %}
+            {% endfor %}
+            </div>
+          {% endif %}
+          <header class="bgimg-2 w3-display-container w3-grayscale-min" id="home">
+        {% else %}
+            {% if messages %}
+              {% for message in messages %}
+                  {% if "email_active" in message.tags %}
+                      <div class="alert alert-primary" role="email_active">
+                      <p class="{{ message.tags }}" id="message-center">{{ message }}</p>
+                  {% endif %}
+              {% endfor %}
+              </div>
+            {% endif %}
+            <header class="bgimg-1 w3-display-container w3-grayscale-min" id="home" >
+        {% endif %}
+
+          <div class="w3-display-left w3-text-white" style="padding:48px">
+            <h3 id="jumbo">Start Buying and Selling Today</h3><br>
+            <br><br>
+            <span class="w3-large">Hey you! There's a brand new way to easily buy and sell your new and lightly used items</span>
+            {% if user.is_authenticated %}
+                <p><a href="{% url 'for_sale' %}" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Click here to see items for sale</a></p>
+                <p><a href="{% url 'post_list' %}" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Click here see your items</a></p>
+                <p><a href="{% url 'add_post' %}" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Click here to add a new item</a></p>
+            {% else %}
+                <p><a href="/login" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Click here to Login</a></p>
+                <p><a href="/register" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Click here to signup</a></p>             
+            {% endif %}
+            </header>
+
+            <!-- About Section -->
+            <div class="w3-container" style="padding:128px 1px" id="about">
+              <h3 class="w3-center">ABOUT THE WEBSITE</h3>
+              <p class="w3-center w3-large">Key features of our website</p><br>
+              <div class="w3-row-padding w3-center" style="margin-top:64px">
+                <div class="w3-quarter">
+                  <i class="fa fa-archive w3-margin-bottom w3-jumbo w3-center"></i>
+                  <p class="w3-large">Trade</p>
+                  <p>A better way to buy and sell your items online</p>
+                </div>
+                <div class="w3-quarter">
+                  <i class="fa fa-lock w3-margin-bottom w3-jumbo"></i>
+                  <p class="w3-large">Safe</p>
+                  <p>Your information will remain anonymous so there is no reason to be worried</p>
+                </div>
+                <div class="w3-quarter">
+                  <i class="fa fa-graduation-cap w3-margin-bottom w3-jumbo"></i>
+                  <p class="w3-large">Private</p>
+                  <p>In order to keep our users safe, only students, faculty members, and staff will be granted access to this website</p>
+                </div>
+                <div class="w3-quarte r">
+                  <i class="fa fa-line-chart w3-margin-bottom w3-jumbo"></i>
+                  <p class="w3-large">Develop</p>
+                  <p>Put some money in your pocket, find some great deals, and help grow your community</p>
+                </div>
+              </div>
+            </div>
+          </div> 
+
+
+
+{% endblock content %}
