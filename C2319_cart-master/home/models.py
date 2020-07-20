@@ -40,6 +40,9 @@ class Item(models.Model):
     #publish = models.IntegerField(choices=STATUS, default=0)
     description = models.TextField(null=True, max_length=300)
     post = models.ForeignKey(Post, on_delete = models.CASCADE,related_name="post" , null=True)
+    imgurl  = models.TextField(default = "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg")
+    discount_price = models.FloatField(blank=True, null=True)
+
     
 
 
@@ -56,6 +59,9 @@ class Item(models.Model):
     def get_remove_from_cart_url(self):
         return reverse("remove-from-cart",kwargs={"pk": self.pk})
 
+    def get_img_url(self):
+        return self.imgurl
+
 class OrderItem(models.Model):
     #user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE , related_name="orderitem", null=True)
@@ -65,6 +71,20 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f"{self.quantity} of {self.item.item_name}"
+
+    def get_total_item_price(self):
+        return self.quantity * self.item.price
+
+    def get_discount_item_price(self):
+        return self.quantity * self.item.discount_price
+
+    def get_amount_saved(self):
+        return self.get_total_item_price() - self.get_discount_item_price()
+
+    def get_final_price(self):
+        if self.item.discount_price:
+            return self.get_discount_item_price()
+        return self.get_total_item_price()
 
 class Order(models.Model):
     #user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
@@ -77,3 +97,8 @@ class Order(models.Model):
     def __str__(self):
         return self.user.username
 
+    def get_total_price(self):
+        total = 0
+        for order_item in self.items.all():
+            total += order_item.get_final_price()
+        return total
