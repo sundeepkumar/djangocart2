@@ -45,5 +45,6 @@ class Post(models.Model):
     condition = models.IntegerField(choices=CONDITION , default = 4)
     price = models.DecimalField(max_digits=11 , decimal_places=2, default=Decimal(0.00), null=True ,blank=True, validators=[MinValueValidator(0.00) , MaxValueValidator(9999999999)])
     publish = models.IntegerField(choices=STATUS, default=0)
+  
     
 

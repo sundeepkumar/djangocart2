@@ -42,6 +42,7 @@ class Item(models.Model):
     post = models.ForeignKey(Post, on_delete = models.CASCADE,related_name="post" , null=True)
     imgurl  = models.TextField(default = "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg")
     discount_price = models.FloatField(blank=True, null=True)
+    
 
     
 
