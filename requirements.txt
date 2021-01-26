@@ -53,13 +53,8 @@ libarchive-c==2.9
 lightgbm==3.1.1
 locket==0.2.0
 lxml==4.6.2
-mccabe==0.6.1
-mkl-fft==1.2.0
-mkl-random==1.1.1
-mkl-service==2.3.0
 monotonic==1.5
 mtcnn==0.1.0
-mxnet-mkl==1.6.0
 navigator-updater==0.2.1
 netifaces==0.10.9
 nltk==3.5
