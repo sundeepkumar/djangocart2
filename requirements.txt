@@ -190,12 +190,7 @@ soupsieve @ file:///tmp/build/80754af9/soupsieve_1607965878077/work
 sqlparse==0.3.0
 stevedore==3.3.0
 tblib @ file:///tmp/build/80754af9/tblib_1597928476713/work
-tensorboard==2.4.0
-tensorboard-plugin-wit==1.7.0
-tensorflow @ file:///home/conda/feedstock_root/build_artifacts/tensorflow_1594833314895/work/tensorflow_pkg/tensorflow-1.14.0-cp37-cp37m-linux_x86_64.whl
-tensorflow-estimator==2.4.0
-tensorflow-gpu==2.4.0
-termcolor==1.1.0
+
 terminado==0.9.2
 testpath==0.4.4
 Theano @ file:///home/conda/feedstock_root/build_artifacts/theano_1604228519858/work
