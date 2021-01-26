@@ -54,8 +54,6 @@ lightgbm==3.1.1
 locket==0.2.0
 lxml==4.6.2
 monotonic==1.5
-mtcnn==0.1.0
-navigator-updater==0.2.1
 netifaces==0.10.9
 nltk==3.5
 numpy==1.19.4
