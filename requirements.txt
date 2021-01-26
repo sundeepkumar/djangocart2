@@ -13,8 +13,6 @@ cachetools==4.2.0
 certifi==2019.11.28
 cffi==1.14.0
 click==7.1.2
-cliff==3.5.0
-clyent==1.2.2
 cmaes==0.7.0
 cmd2==1.4.0
 colorama==0.4.3
