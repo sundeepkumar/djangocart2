@@ -74,8 +74,6 @@ prompt-toolkit==3.0.10
 protobuf==3.14.0
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
-pycosat==0.6.3
-pygpu==0.7.6
 pylint==2.4.4
 PyOpenGL==3.1.1a1
 pyparsing==2.4.7
