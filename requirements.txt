@@ -55,7 +55,6 @@ locket==0.2.0
 lxml==4.6.2
 monotonic==1.5
 netifaces==0.10.9
-nltk==3.5
 numpy==1.19.4
 oauthlib==3.1.0
 olefile==0.46
