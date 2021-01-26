@@ -1,6 +1,4 @@
 alembic==1.4.3
-anaconda-client==1.7.2
-anaconda-navigator==1.9.12
 asgiref==3.2.3
 astroid==2.3.3
 astunparse==1.6.3
@@ -65,7 +63,6 @@ monotonic==1.5
 mtcnn==0.1.0
 mxnet-mkl==1.6.0
 navigator-updater==0.2.1
-
 netifaces==0.10.9
 nltk==3.5
 numpy==1.19.4
